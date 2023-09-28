@@ -18,6 +18,16 @@
 
         <h1>HEJ!</h1>
 
+        <input type="button" onclick="createGraph()">
+
+        <script>
+            function createGraph(){
+                let data = '${requestScope.json}';
+                console.log(data);
+                console.log(typeof data)
+            }
+        </script>
+
     </jsp:body>
 
 </t:pagetemplate>
