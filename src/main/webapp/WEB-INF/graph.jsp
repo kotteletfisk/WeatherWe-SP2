@@ -16,19 +16,49 @@
 
     <jsp:body>
 
-        <h1>HEJ!</h1>
+        <h1>Temperature over time</h1>
 
-        <input type="button" onclick="createGraph()" value="Javascript">
+        <!-- Load the Google Charts library -->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            // Load the Visualization API and set a callback function
+            google.charts.load('current', {'packages': ['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
 
-        <script>
-            function createGraph(){
-                let data = '${requestScope.json}';
-                console.log(data);
-                console.log(typeof data)
+            function drawChart() {
 
-                let json = JSON.parse(data);
-                console.log(json);
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Date');
+                data.addColumn('number', 'Temperature');
+
+                var jsonArray = '${requestScope.json}';
+
+                // Parse the JSON data
+                var jsonData = JSON.parse(jsonArray);
+                console.log(jsonData);
+
+                // Add data rows to the DataTable
+                for (var i = 0; i < jsonData.length; i++) {
+                    data.addRow([jsonData[i].time, jsonData[i].temp]);
+                }
+
+                var options = {
+                    title: 'Weather',
+                    curveType: 'function',
+                    legend: { position: 'bottom' }
+                };
+
+                var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+                chart.draw(data, options);
             }
+        </script>
+
+        <!-- HTML element to display the chart -->
+        <div id="chart_div" style="width: 800px; height: 400px;"></div>
+
+        <script type="text/javascript">
+            google.charts.load('current', {'packages': ['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
         </script>
 
     </jsp:body>
