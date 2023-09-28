@@ -11,15 +11,12 @@
 
     <jsp:attribute name="footer">
 
-        <p style="text-align: center">All data is provided by yr via:  <a href="https://www.yr.no">https://www.yr.no</a>.</p>
+        <p style="text-align: center">All data is provided by yr via:  <a href="https://www.yr.no">https://www.yr.no</a>,
+        and <a href="https://vejr.eu/pages/api-documentation">https://vejr.eu/pages/api-documentation</a></p>
 
     </jsp:attribute>
 
     <jsp:body>
-
-        <form action="graphservlet" method="post">
-            <input type="submit" value="Graph">
-        </form>
 
         <div class="row mt-2">
             <div class="col">
@@ -128,21 +125,20 @@
                 </div>
 
                 <div class="row mt-2">
-
                     <div class="col">
                         <form action="cityservlet" method="post">
                             <input type="number" hidden name="cityId" value="7">
                             <input type="text" hidden name="city" value="Gilleleje">
                             <input type="submit" class="btn btn-primary" value="Gilleleje" />
                         </form>
-                         <div class="col">
+                    </div>
+                     <div class="col">
                         <form action="graphservlet" method="post">
                             <input type="number" hidden name="cityId" value="7">
                             <input type="text" hidden name="city" value="Gilleleje">
-                            <input type="submit" class="btn btn-primary" value="Gilleleje" />
+                            <input type="submit" class="btn btn-primary" value="Graf" />
                         </form>
-
-                    </div>
+                     </div>
                 </div>
             </div>
 

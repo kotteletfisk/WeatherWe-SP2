@@ -44,7 +44,7 @@ public class GraphServlet extends HttpServlet
         WeatherDAO weatherDAO = WeatherDAO.getInstance();
 
         List<TempTimeDTO> dtoList = weatherDAO.getTimeTempByCityId(cityId);
-        dtoList.sort(Comparator.comparing(TempTimeDTO::getWeatherId));
+        dtoList.sort(Comparator.comparing(TempTimeDTO::getTime));
 
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
