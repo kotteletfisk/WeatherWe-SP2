@@ -63,5 +63,4 @@ public class CityServlet extends HttpServlet
         request.setAttribute("weatherList", weatherList);
         request.getRequestDispatcher("/WEB-INF/city.jsp").forward(request, response);
     }
-
 }
