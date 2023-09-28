@@ -18,6 +18,10 @@
             <input type="submit" value="Init" />
         </form>
 
+        <form action="graph-servlet">
+            <input type="submit" value="Graph" />
+        </form>
+
         <p>Startcode for 2nd semester </p>
 
         <c:if test="${sessionScope.user != null}">
