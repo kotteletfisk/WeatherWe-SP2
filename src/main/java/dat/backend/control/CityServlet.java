@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "initServlet", urlPatterns = {"/cityservlet"} )
+@WebServlet(name = "CityServlet", urlPatterns = {"/cityservlet"} )
 public class CityServlet extends HttpServlet
 {
 
@@ -34,33 +34,8 @@ public class CityServlet extends HttpServlet
 
 
         String cityName = request.getParameter("city");
-        List<Weather> weatherList = null;
         WeatherDAO weatherDAO = new WeatherDAO();
-        weatherList = weatherDAO.readAllByCityName(cityName);
-        switch (cityName)
-        {
-            case "København":
-
-                break;
-            case "Odense":
-
-                break;
-            case "Esbjerg":
-
-                break;
-            case "Rønne":
-
-                break;
-            case "Skagen":
-
-                break;
-            case "Gedser":
-
-                break;
-            case "Gilleleje":
-
-                break;
-        }
+        List<Weather> weatherList = weatherDAO.readAllByCityName(cityName);
 
         request.setAttribute("cityName", cityName);
         request.setAttribute("weatherList", weatherList);
