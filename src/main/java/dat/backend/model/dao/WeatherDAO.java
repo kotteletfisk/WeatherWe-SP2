@@ -13,9 +13,20 @@ public class WeatherDAO implements IDAO<Weather>
 {
     EntityManagerFactory emf;
 
-    public WeatherDAO()
+    private static WeatherDAO weatherDAO;
+
+    private WeatherDAO()
     {
         this.emf = HibernateConfig.getEntityManagerFactoryConfig("weather", "update");
+    }
+
+    public static WeatherDAO getInstance()
+    {
+        if (weatherDAO == null)
+        {
+            weatherDAO = new WeatherDAO();
+        }
+        return weatherDAO;
     }
 
     @Override

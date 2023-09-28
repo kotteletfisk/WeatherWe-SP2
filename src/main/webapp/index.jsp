@@ -17,6 +17,10 @@
 
     <jsp:body>
 
+        <form action="graphservlet" method="post">
+            <input type="submit" value="Graph">
+        </form>
+
         <div class="row mt-2">
             <div class="col">
                 <h2>Get weather by city</h2>
