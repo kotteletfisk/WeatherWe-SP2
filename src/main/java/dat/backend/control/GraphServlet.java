@@ -1,6 +1,7 @@
 package dat.backend.control;
 
 import com.google.gson.*;
+import dat.backend.model.LocalDateTimeAdapter;
 import dat.backend.model.Weather;
 import dat.backend.model.dao.WeatherDAO;
 import dat.backend.model.dto.TempTimeDTO;
@@ -42,12 +43,9 @@ public class GraphServlet extends HttpServlet
 
         List<TempTimeDTO> dtoList = weatherDAO.getTimeTempByCityId(1);
 
-        Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new JsonDeserializer<LocalDateTime>() {
-            @Override
-            public LocalDateTime deserialize(JsonElement json, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
-                return ZonedDateTime.parse(json.getAsJsonPrimitive().getAsString()).toLocalDateTime();
-            }
-        }).create();
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
+                .create();
 
 
 

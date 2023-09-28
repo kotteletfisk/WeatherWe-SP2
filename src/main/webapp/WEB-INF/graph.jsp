@@ -18,13 +18,16 @@
 
         <h1>HEJ!</h1>
 
-        <input type="button" onclick="createGraph()">
+        <input type="button" onclick="createGraph()" value="Javascript">
 
         <script>
             function createGraph(){
                 let data = '${requestScope.json}';
                 console.log(data);
                 console.log(typeof data)
+
+                let json = JSON.parse(data);
+                console.log(json);
             }
         </script>
 
