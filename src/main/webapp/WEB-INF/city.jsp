@@ -20,26 +20,22 @@
 
             <table class="table table-dark table-striped">
                 <tr>
-                    <th>Id</th>
                     <th>Humid</th>
                     <th>Precipitation</th>
                     <th>SkyText</th>
                     <th>Temperature</th>
                     <th>Time</th>
                     <th>Wind</th>
-                    <th>CityId</th>
                 </tr>
 
                 <c:forEach var="weather" items="${requestScope.weatherList}">
                 <tr>
-                    <td>${weather.id} 2 </td>
                     <td>${weather.humid} 34</td>
                     <td>${weather.precipitation} 0</td>
                     <td>${weather.skyText} Skyet</td>
                     <td>${weather.temperature} 23</td>
                     <td>${weather.time} 12:00</td>
                     <td>${weather.wind} 4 </td>
-                    <td>${weather.cityId} 1</td>
                 </tr>
                 </c:forEach>
             </table>
