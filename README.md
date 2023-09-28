@@ -1,2 +1,2 @@
 
-## Web server for weather data
+## Web application for weather data

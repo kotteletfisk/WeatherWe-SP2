@@ -2,6 +2,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page errorPage="error.jsp" isErrorPage="false" %>
+<link rel="stylesheet" type="text/css" href="css/style.css" media=”screen” />
 
 <t:pagetemplate>
     <jsp:attribute name="header">
