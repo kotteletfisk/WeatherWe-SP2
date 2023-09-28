@@ -16,6 +16,8 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @WebServlet(name = "graphservlet", urlPatterns = {"/graphservlet"} )
@@ -42,6 +44,7 @@ public class GraphServlet extends HttpServlet
         WeatherDAO weatherDAO = WeatherDAO.getInstance();
 
         List<TempTimeDTO> dtoList = weatherDAO.getTimeTempByCityId(cityId);
+        dtoList.sort(Comparator.comparing(TempTimeDTO::getWeatherId));
 
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())

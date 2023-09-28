@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 public class TempTimeDTO
 {
     private final Integer cityId;
+    private final Integer weatherId;
     private final Integer temp;
     private final LocalDateTime time;
 

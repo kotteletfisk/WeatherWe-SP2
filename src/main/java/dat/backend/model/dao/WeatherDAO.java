@@ -62,7 +62,7 @@ public class WeatherDAO implements IDAO<Weather>
     {
         try (EntityManager em = emf.createEntityManager())
         {
-            List<TempTimeDTO> list = em.createQuery("SELECT new dat.backend.model.dto.TempTimeDTO(w.city.id, w.temperature, w.time)" +
+            List<TempTimeDTO> list = em.createQuery("SELECT new dat.backend.model.dto.TempTimeDTO(w.city.id, w.id, w.temperature, w.time)" +
                     " FROM Weather w WHERE w.city.id = :id", TempTimeDTO.class)
                     .setParameter("id", id)
                     .getResultList();
