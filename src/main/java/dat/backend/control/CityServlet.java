@@ -1,17 +1,17 @@
 package dat.backend.control;
 
-import dat.backend.model.Weather;
+import dat.backend.model.dao.WeatherDAO;
+import dat.backend.model.entities.Weather;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "initServlet", urlPatterns = {"/cityservlet"} )
+@WebServlet(name = "CityServlet", urlPatterns = {"/cityservlet"} )
 public class CityServlet extends HttpServlet
 {
 
@@ -32,32 +32,11 @@ public class CityServlet extends HttpServlet
         response.setContentType("text/html");
 
 
+        int cityId = Integer.parseInt(request.getParameter("cityId"));
         String cityName = request.getParameter("city");
-        List<Weather> weatherList = null;
-        switch (cityName)
-        {
-            case "København":
 
-                break;
-            case "Odense":
-
-                break;
-            case "Esbjerg":
-
-                break;
-            case "Rønne":
-
-                break;
-            case "Skagen":
-
-                break;
-            case "Gedser":
-
-                break;
-            case "Gilleleje":
-
-                break;
-        }
+        WeatherDAO weatherDAO = new WeatherDAO();
+        List<Weather> weatherList = weatherDAO.readAllByCityName(cityName);
 
         request.setAttribute("cityName", cityName);
         request.setAttribute("weatherList", weatherList);
