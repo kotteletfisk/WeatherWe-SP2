@@ -2,7 +2,6 @@ package dat.backend.control;
 
 import com.google.gson.*;
 import dat.backend.model.LocalDateTimeAdapter;
-import dat.backend.model.Weather;
 import dat.backend.model.dao.WeatherDAO;
 import dat.backend.model.dto.TempTimeDTO;
 
@@ -38,10 +37,11 @@ public class GraphServlet extends HttpServlet
     {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
+        Integer cityId = Integer.parseInt(request.getParameter("cityId"));
 
         WeatherDAO weatherDAO = WeatherDAO.getInstance();
 
-        List<TempTimeDTO> dtoList = weatherDAO.getTimeTempByCityId(1);
+        List<TempTimeDTO> dtoList = weatherDAO.getTimeTempByCityId(cityId);
 
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
