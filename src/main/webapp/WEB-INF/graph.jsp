@@ -15,13 +15,16 @@
                 data.addColumn('string', 'Date');
                 data.addColumn('number', 'Temperature');
 
-                    for (let i = 0; i < "$dtos.length()"; i++)
-                    {
-                        data.addRows("$dtos.get(i).getTime()", "$dtos.get(i).getTemp()");
-                    }
+                    data.addRows([
+                        ['2018', 1000],
+                        ['2019', 1170],
+                        ['2020', 660],
+                        ['2021', 1030]
+                    ]);
+
 
                 var options = {
-                title: 'Sales Performance',
+                title: 'Weather',
                 curveType: 'function',
                 legend: { position: 'bottom' }
             };

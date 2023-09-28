@@ -1,6 +1,7 @@
 package dat.backend.control;
 
 import dat.backend.model.dao.WeatherDAO;
+import dat.backend.model.dto.TempTimeDTO;
 import dat.backend.model.entities.Weather;
 
 import javax.servlet.ServletException;
@@ -29,18 +30,15 @@ public class CityServlet extends HttpServlet
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
-        request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html");
-
 
         int cityId = Integer.parseInt(request.getParameter("cityId"));
-        String cityName = request.getParameter("city");
 
         WeatherDAO weatherDAO = new WeatherDAO();
-        List<Weather> weatherList = weatherDAO.readAllByCityName(cityName);
+        List<TempTimeDTO> dtos = weatherDAO.getTimeTempByCityId(cityId);
 
-        request.setAttribute("cityName", cityName);
-        request.setAttribute("weatherList", weatherList);
-        request.getRequestDispatcher("/WEB-INF/city.jsp").forward(request, response);
+        request.setAttribute("dtos", dtos);
+
+        request.setAttribute("cityId", cityId);
+        request.getRequestDispatcher("/WEB-INF/graph.jsp").forward(request, response);
     }
 }
