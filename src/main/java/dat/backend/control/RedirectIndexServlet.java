@@ -33,13 +33,13 @@ public class RedirectIndexServlet extends HttpServlet
 
         WeatherDAO weatherDAO = new WeatherDAO();
 
-        request.setAttribute("humid", weatherDAO.getAvgHumid());
-        request.setAttribute("temp", weatherDAO.getAvgTemp());
-        request.setAttribute("wind", weatherDAO.getAvgWind());
-        request.setAttribute("precip", weatherDAO.getAvgPrecip());
+        DecimalFormat df = new DecimalFormat("#.##");
 
+        request.setAttribute("humid", df.format(weatherDAO.getAvgHumid()));
+        request.setAttribute("temp", df.format(weatherDAO.getAvgTemp()));
+        request.setAttribute("wind", df.format(weatherDAO.getAvgWind()));
+        request.setAttribute("precip", df.format(weatherDAO.getAvgPrecip()));
 
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
-
 }
