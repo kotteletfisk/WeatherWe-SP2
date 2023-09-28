@@ -47,4 +47,5 @@ public class WeatherDAO implements IDAO<Weather>
             return list;
         }
     }
+
 }
