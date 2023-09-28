@@ -19,6 +19,7 @@
         <div class="mt-2">
 
             <table class="table table-dark table-striped">
+                <h3>Weather date for the last ${requestScope.weatherList.size()} hours.</h3>
                 <tr>
                     <th>Humid</th>
                     <th>Precipitation</th>
