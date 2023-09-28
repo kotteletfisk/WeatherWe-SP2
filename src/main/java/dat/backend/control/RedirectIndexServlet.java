@@ -1,19 +1,18 @@
 package dat.backend.control;
 
 import dat.backend.model.dao.WeatherDAO;
-import dat.backend.model.entities.Weather;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.DecimalFormat;
 
-@WebServlet(name = "CityServlet", urlPatterns = {"/cityservlet"} )
-public class CityServlet extends HttpServlet
+@WebServlet(name = "RedirectIndexServlet", urlPatterns = {"/redirectindexservlet"} )
+public class RedirectIndexServlet extends HttpServlet
 {
 
     @Override
@@ -24,7 +23,7 @@ public class CityServlet extends HttpServlet
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/index").forward(request, response);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
@@ -32,13 +31,15 @@ public class CityServlet extends HttpServlet
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
 
-
-        String cityName = request.getParameter("city");
         WeatherDAO weatherDAO = new WeatherDAO();
-        List<Weather> weatherList = weatherDAO.readAllByCityName(cityName);
 
-        request.setAttribute("cityName", cityName);
-        request.setAttribute("weatherList", weatherList);
-        request.getRequestDispatcher("/WEB-INF/city.jsp").forward(request, response);
+        request.setAttribute("humid", weatherDAO.getAvgHumid());
+        request.setAttribute("temp", weatherDAO.getAvgTemp());
+        request.setAttribute("wind", weatherDAO.getAvgWind());
+        request.setAttribute("precip", weatherDAO.getAvgPrecip());
+
+
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
+
 }

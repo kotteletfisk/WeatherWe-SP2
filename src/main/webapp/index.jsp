@@ -86,23 +86,20 @@
             </div>
 
 
-
             <%-- Average weather --%>
             <div class="col">
                 <h2>Average weather</h2>
-                <c:forEach items="" var="day">
-                    <div class="row">
-                        <div class="col">
-                            <p> <p/>
-                        </div>
-                        <div class="col">
-                            <p> <p/>
-                        </div>
-                        <div class="col">
-                            <p> <p/>
-                        </div>
-                    </div>
-                </c:forEach>
+                <c:if test="${requestScope.temp != null}">
+                    <p>Temperature: ${requestScope.temp} °C</p>
+                    <p>Humid: ${requestScope.humid} %</p>
+                    <p>Wind: ${requestScope.wind} m/s</p>
+                    <p>Precipitation: ${requestScope.precip} mm</p>
+                </c:if>
+
+                <form action="redirectindexservlet" method="post">
+
+                    <input type="submit" class="btn btn-primary" value="Get avg weather" />
+                </form>
             </div>
         </div>
 

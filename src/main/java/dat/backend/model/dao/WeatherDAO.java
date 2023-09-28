@@ -36,6 +36,17 @@ public class WeatherDAO implements IDAO<Weather>
         }
     }
 
+    public List<Weather> readAllByCityName(String name)
+    {
+        try (EntityManager em = emf.createEntityManager())
+        {
+            return em.createQuery("SELECT w FROM Weather w WHERE w.city.name = :name", Weather.class)
+                    .setParameter("name", name)
+                    .getResultList();
+        }
+    }
+
+
     public List<TempTimeDTO> getTimeTempByCityId(Integer id)
     {
         try (EntityManager em = emf.createEntityManager())
@@ -48,4 +59,39 @@ public class WeatherDAO implements IDAO<Weather>
         }
     }
 
+    public Double getAvgTemp()
+    {
+        try(EntityManager em = emf.createEntityManager())
+        {
+            return em.createQuery("SELECT AVG(temperature) FROM Weather", Double.class)
+                    .getSingleResult();
+        }
+    }
+
+    public Double getAvgHumid()
+    {
+        try(EntityManager em = emf.createEntityManager())
+        {
+            return em.createQuery("SELECT AVG(humid) FROM Weather", Double.class)
+                    .getSingleResult();
+        }
+    }
+
+    public Double getAvgPrecip()
+    {
+        try(EntityManager em = emf.createEntityManager())
+        {
+            return em.createQuery("SELECT AVG(precipitation) FROM Weather", Double.class)
+                    .getSingleResult();
+        }
+    }
+
+    public Double getAvgWind()
+    {
+        try(EntityManager em = emf.createEntityManager())
+        {
+            return em.createQuery("SELECT AVG(CAST(wind AS double)) FROM Weather", Double.class)
+                    .getSingleResult();
+        }
+    }
 }
