@@ -12,14 +12,13 @@
 
                 function drawChart() {
                 var data = new google.visualization.DataTable();
-                data.addColumn('string', 'Year');
-                data.addColumn('number', 'Sales');
-                data.addRows([
-                ['2018', 1000],
-                ['2019', 1170],
-                ['2020', 660],
-                ['2021', 1030]
-                ]);
+                data.addColumn('string', 'Date');
+                data.addColumn('number', 'Temperature');
+
+                    for (let i = 0; i < "$dtos.length()"; i++)
+                    {
+                        data.addRows("$dtos.get(i).getTime()", "$dtos.get(i).getTemp()");
+                    }
 
                 var options = {
                 title: 'Sales Performance',
@@ -29,7 +28,7 @@
 
                 var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
                 chart.draw(data, options);
-            }
+        }
         </script>
 
         </script>
