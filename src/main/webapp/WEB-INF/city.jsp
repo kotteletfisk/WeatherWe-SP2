@@ -30,12 +30,12 @@
 
                 <c:forEach var="weather" items="${requestScope.weatherList}">
                 <tr>
-                    <td>${weather.humid} 34</td>
-                    <td>${weather.precipitation} 0</td>
-                    <td>${weather.skyText} Skyet</td>
-                    <td>${weather.temperature} 23</td>
-                    <td>${weather.time} 12:00</td>
-                    <td>${weather.wind} 4 </td>
+                    <td>${weather.humid}</td>
+                    <td>${weather.precipitation}</td>
+                    <td>${weather.skyText}</td>
+                    <td>${weather.temperature}</td>
+                    <td>${weather.time}</td>
+                    <td>${weather.wind}</td>
                 </tr>
                 </c:forEach>
             </table>
