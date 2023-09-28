@@ -31,7 +31,7 @@ public class RedirectIndexServlet extends HttpServlet
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
 
-        WeatherDAO weatherDAO = new WeatherDAO();
+        WeatherDAO weatherDAO = WeatherDAO.getInstance();
 
         DecimalFormat df = new DecimalFormat("#.##");
 

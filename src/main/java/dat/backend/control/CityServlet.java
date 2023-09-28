@@ -35,7 +35,7 @@ public class CityServlet extends HttpServlet
         int cityId = Integer.parseInt(request.getParameter("cityId"));
         String cityName = request.getParameter("city");
 
-        WeatherDAO weatherDAO = new WeatherDAO();
+        WeatherDAO weatherDAO = WeatherDAO.getInstance();
         List<Weather> weatherList = weatherDAO.readAllByCityName(cityName);
 
         request.setAttribute("cityName", cityName);
