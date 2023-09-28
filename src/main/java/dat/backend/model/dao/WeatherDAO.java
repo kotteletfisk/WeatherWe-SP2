@@ -36,6 +36,17 @@ public class WeatherDAO implements IDAO<Weather>
         }
     }
 
+    public List<Weather> readAllByCityName(String name)
+    {
+        try (EntityManager em = emf.createEntityManager())
+        {
+            return em.createQuery("SELECT w FROM Weather w WHERE w.city.name = :name", Weather.class)
+                    .setParameter("name", name)
+                    .getResultList();
+        }
+    }
+
+
     public List<TempTimeDTO> getTimeTempByCityId(Integer id)
     {
         try (EntityManager em = emf.createEntityManager())
